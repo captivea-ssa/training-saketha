@@ -4,16 +4,15 @@
 from odoo import fields, models,api
 
 
-class DiscountModify(SaleOrderLine):
-    #@api.depends('state', 'price_reduce', 'product_id', 'untaxed_amount_invoiced', 'qty_delivered','discount')
+class SaleOrderLine(models.Model):
+    
+    @api.depends('state', 'price_reduce', 'product_id', 'untaxed_amount_invoiced', 'qty_delivered','discount')
     #def _onchange_discount(self):
      #   self.discount = discount
-    @api.onchange('product_id', 'price_unit', 'product_uom', 'product_uom_qty', 'tax_id')
+    #@api.onchange('product_id', 'price_unit', 'product_uom', 'product_uom_qty', 'tax_id')
 
     def _onchange_discount(self):
-
         self.discount = 45
-
         if not (self.product_id and self.product_uom and
 
                 self.order_id.partner_id and self.order_id.pricelist_id and
