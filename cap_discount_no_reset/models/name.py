@@ -8,7 +8,7 @@ class SaleOrderLine(models.Model):
     _name = 'sale.order.line'
     _inherit = 'sale.order.line'
 
-    def onchange_discount(self)
+    def _onchange_discount(self)
         #values = super(SaleOrderLineCustom, self).onchange_discount()
         values.discount =55
         return values   
