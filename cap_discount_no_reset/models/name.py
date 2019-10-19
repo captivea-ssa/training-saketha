@@ -10,7 +10,7 @@ class SaleOrderLine(models.Model):
 
     def _onchange_discount(self)
         #values = super(SaleOrderLineCustom, self).onchange_discount()
-        values.discount =55
-        return values   
+        self.discount =55
+       # return values   
         
                 
