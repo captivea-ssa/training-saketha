@@ -4,13 +4,13 @@
 from odoo import fields, models,api
 
 
-class SaleOrderLine(models.Model):
-    _name = 'sale.order.line'
+class Sale_Order_Line(models.Model):
     _inherit = 'sale.order.line'
-
+    @api.onchange('product_id', 'price_unit', 'product_uom', 'product_uom_qty', 'tax_id')
     def _onchange_discount(self)
-        #values = super(SaleOrderLineCustom, self).onchange_discount()
-        self.discount =55
-       # return values   
+        record = super(Sale_Order_Line, self)._onchange_discount()
+        record['discount'] =55
+        return record   
+        
         
                 
