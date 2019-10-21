@@ -8,15 +8,12 @@ class Sale_Order_Line_custom(models.Model):
     _name = 'sale.order.line.custom'
     _inherit = 'sale.order.line'
     customdiscount = fields.Boolean(string = 'Custom Discount class')
-    customdiscount = false
+
     @api.model
     @api.onchange('product_id', 'price_unit', 'product_uom', 'product_uom_qty', 'tax_id')
     def _onchange_discount(self)
-        record = super(Sale_Order_Line_custom, self)._onchange_discount()
-        record['discount'] =55.0
-        record.customdiscount = true
-        print('did the custom class execute {}', record.customdiscount)
-        return record  
-        
-        
-                
+        res = super(Sale_Order_Line_custom, self)._onchange_discount()
+        self['discount'] = 55.0
+        self['customdiscount'] = true
+        print('did the custom class execute {}', self['customdiscount'])
+        return res
